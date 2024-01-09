@@ -1,0 +1,26 @@
+# Name of the pipeline
+name: AzureDevOpsPipeline
+
+# Agent pool specification
+pool:
+  name: Agent
+  demands: 
+    - msbuild
+    # You can add more demands specific to your build requirements
+
+# Stages of the pipeline
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    displayName: 'Build Job'
+    pool:
+      vmImage: 'windows-latest' # Or specify a different image based on your requirements
+    steps:
+    - script: |
+        # Your build script or commands here
+        echo "Building the project..."
+        # Example: msbuild MySolution.sln
+      displayName: 'Build'
+
+# Add more stages, jobs, and steps as needed for your pipeline
